@@ -95,7 +95,9 @@
         {% for product in products %}
         <div class="product-card">
             <img src="/media/{{product.product_image.first.image}}" alt="Product 1">
-            <h3>{{product.product_name}}</h3>
+            <a href="{% url 'get_product' product.slug %}">
+                <h4>{{product.product_name}}</h4>
+            </a>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <span class="price">{{product.price}}</span>
             <a href="#" class="btn">Add to Cart</a>
