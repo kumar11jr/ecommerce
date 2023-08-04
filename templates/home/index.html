@@ -92,39 +92,22 @@
     <section class="featured-products">
         <h2>Featured Products</h2>
         <!-- Add your featured product cards here -->
+        {% for product in products %}
         <div class="product-card">
-            <img src="product1.jpg" alt="Product 1">
-            <h3>Product 1</h3>
+            <img src="/media/{{product.product_image.first.image}}" alt="Product 1">
+            <h3>{{product.product_name}}</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <span class="price">$19.99</span>
+            <span class="price">{{product.price}}</span>
             <a href="#" class="btn">Add to Cart</a>
         </div>
-        <div class="product-card">
-            <img src="product1.jpg" alt="Product 1">
-            <h3>Product 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <span class="price">$19.99</span>
-            <a href="#" class="btn">Add to Cart</a>
-        </div>
-        <div class="product-card">
-            <img src="product1.jpg" alt="Product 1">
-            <h3>Product 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <span class="price">$19.99</span>
-            <a href="#" class="btn">Add to Cart</a>
-        </div>
-        <div class="product-card">
-            <img src="product1.jpg" alt="Product 1">
-            <h3>Product 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <span class="price">$19.99</span>
-            <a href="#" class="btn">Add to Cart</a>
-        </div>
+        {% endfor %}
+        
+        
         <!-- Add more product cards here -->
     </section>
-    <footer>
+    {% comment %} <footer>
         <p>&copy; 2023 My Shopping Website. All rights reserved.</p>
-    </footer>
+    </footer> {% endcomment %}
 </body>
 </html>
 
