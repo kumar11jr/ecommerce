@@ -1,102 +1,98 @@
-{% extends 'base/base.html' %}
-
-
-{% block start %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Description Page</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
 
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-    
-    header {
-        background-color: #333;
-        color: #fff;
-        text-align: center;
-        padding: 1rem;
-    }
-    
-    main {
-        padding: 2rem;
-    }
-    
-    .product-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .product-image img {
-        max-width: 300px;
-        border-radius: 4px;
-        margin-right: 2rem;
-    }
-    
-    .product-details {
-        max-width: 400px;
-    }
-    
-    .product-details h2 {
-        margin-bottom: 1rem;
-    }
-    
-    .price {
-        font-weight: bold;
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-    }
-    
-    .btn {
-        background-color: #3498db;
-        color: #fff;
-        text-decoration: none;
-        padding: 0.5rem 1rem;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-    
-    footer {
-        background-color: #333;
-        color: #fff;
-        text-align: center;
-        padding: 1rem;
-    }
-    
-</style>
+        .product-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .product-thumbnail-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .product-thumbnail {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .product-thumbnail img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .product-details {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            color: #e91e63;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        .buy-button {
+            display: inline-block;
+            background-color: #e91e63;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
 <body>
-    <header>
-        <h1>My Shopping Website</h1>
-    </header>
-    <main>
-        <div class="product-container">
-            <div class="product-image">
-                <img src="product1.jpg" alt="Product 1">
-            </div>
-            <div class="product-details">
-                <h2>Product 1</h2>
-                <p class="price">$19.99</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt feugiat nibh, eget faucibus eros fringilla ut. Nullam et libero id mauris laoreet dignissim.</p>
-                <p>Color: Blue</p>
-                <p>Size: Medium</p>
-                <button class="btn">Add to Cart</button>
-            </div>
+    <div class="product-container">
+        <div class="product-image">
+            <img src="/media/{{product.product_image.first.image}}" alt="Product Image">
         </div>
-    </main>
-    <footer>
-        <p>&copy; 2023 My Shopping Website. All rights reserved.</p>
-    </footer>
+        <div class="product-thumbnail-gallery">
+            {% for image in product.product_image.all %}
+            <div class="product-thumbnail"><img src="/media/{{image.image}}" alt="Thumbnail 1"></div>
+            {% endfor %}
+            
+            <!-- Add more thumbnail divs here -->
+        </div>
+        <div class="product-details">
+            <h1 class="product-title">{{product.product_name}}</h1>
+            <p class="product-price">${{product.price}}</p>
+            <p class="product-description">{{product.product_description}}</p>
+            <button class="buy-button">Buy Now</button>
+        </div>
+    </div>
 </body>
 </html>
-
-{% endblock  %}
